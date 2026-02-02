@@ -21,6 +21,8 @@ services:
   pgbouncer:
     image: edoburu/pgbouncer:latest
     container_name: pgbouncer
+    ports:
+      - "6432:6432"
     environment:
       - DB_HOST=db
       - DB_PORT=5432
