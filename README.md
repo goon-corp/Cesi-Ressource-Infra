@@ -29,6 +29,29 @@ environment:
   LOG_LEVEL: "info"   # Ajouté
 ```
 
+### Fichier env
+
+creez en dev un fichier `.env.dev` et `.env.prod` qui contient les variables suivantes:
+
+```
+DB_HOST
+DB_PORT
+DB_USER
+DB_PASSWORD
+DB_NAME
+POOL_MODE
+MAX_CLIENT_CONN
+DEFAULT_POOL_SIZE
+MIN_POOL_SIZE
+RESERVE_POOL_SIZE
+LISTEN_ADDRESS
+LISTEN_PORT
+AUTH_TYPE
+POSTGRES_USER
+POSTGRES_PASSWORD
+POSTGRES_DB
+```
+
 ## Gestion des secrets en fonction de l'environnment
 
 En regle generale si un service n'est pas compilé, les secrets build ne fonctionnent pas. Lorsqu'un service est basé sur une image existante, donc seulement au RUNTIME on passe par un `.env` classique, sur le docker-compose de dev:
