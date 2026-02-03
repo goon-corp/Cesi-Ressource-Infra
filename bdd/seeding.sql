@@ -39,8 +39,23 @@ INSERT INTO ressource_types (id, creation_time, label) VALUES
 (gen_random_uuid(), NOW(), 'Événement');
 
 INSERT INTO regions (id, code, name, slug) VALUES
-(1, '11', 'Île-de-France', 'ile-de-france'),
-(2, '84', 'Auvergne-Rhône-Alpes', 'auvergne-rhone-alpes'),
-(3, '76', 'Occitanie', 'occitanie');
-
+(gen_random_uuid(), '01', 'Guadeloupe', 'guadeloupe'),
+(gen_random_uuid(), '02', 'Martinique', 'martinique'),
+(gen_random_uuid(), '03', 'Guyane', 'guyane'),
+(gen_random_uuid(), '04', 'La Réunion', 'la-reunion'),
+(gen_random_uuid(), '06', 'Mayotte', 'mayotte'),
+(gen_random_uuid(), '11', 'Île-de-France', 'ile-de-france'),
+(gen_random_uuid(), '24', 'Centre-Val de Loire', 'centre-val-de-loire'),
+(gen_random_uuid(), '27', 'Bourgogne-Franche-Comté', 'bourgogne-franche-comte'),
+(gen_random_uuid(), '28', 'Normandie', 'normandie'),
+(gen_random_uuid(), '32', 'Hauts-de-France', 'hauts-de-france'),
+(gen_random_uuid(), '44', 'Grand Est', 'grand-est'),
+(gen_random_uuid(), '52', 'Pays de la Loire', 'pays-de-la-loire'),
+(gen_random_uuid(), '53', 'Bretagne', 'bretagne'),
+(gen_random_uuid(), '75', 'Nouvelle-Aquitaine', 'nouvelle-aquitaine'),
+(gen_random_uuid(), '76', 'Occitanie', 'occitanie'),
+(gen_random_uuid(), '84', 'Auvergne-Rhône-Alpes', 'auvergne-rhone-alpes'),
+(gen_random_uuid(), '93', 'Provence-Alpes-Côte d''Azur', 'provence-alpes-cote-d-azur'),
+(gen_random_uuid(), '94', 'Corse', 'corse'),
+(gen_random_uuid(), 'COM', 'Collectivités d''Outre-Mer', 'collectivites-d-outre-mer');
 COMMIT;

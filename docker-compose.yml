@@ -25,6 +25,7 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - ./bdd/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./bdd/seeding.sql:/docker-entrypoint-initdb.d/seeding.sql
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -d cesi_ressource_db -U user"]
       interval: 10s
