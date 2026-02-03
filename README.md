@@ -54,7 +54,7 @@ POSTGRES_DB
 
 ## Gestion des secrets en fonction de l'environnment
 
-En regle generale si un service n'est pas compilé, les secrets build ne fonctionnent pas. Lorsqu'un service est basé sur une image existante, donc seulement au RUNTIME on passe par un `.env` classique, sur le docker-compose de dev:
+En regle generale si un service n'est pas compilé, les secrets build ne fonctionnent pas. Lorsqu'un service est basé sur une image existante, donc seulement au RUNTIME on passe par un `.env` classique, sur le docker-compose de dev. Les variables sont directement trouvées dans le `.env` et donc plus besoin de ça:
 
 ```YAML
     environment:
