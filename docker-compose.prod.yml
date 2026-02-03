@@ -8,6 +8,8 @@ services:
           cpus: "0.5"
           memory: 512M
     restart: unless-stopped
+    # si besoin d'utiliser un .env:
+    # env_file: ".env.prod"
     secrets:
       - postgres_user
       - postgres_password
