@@ -2,7 +2,8 @@
 
 ```zsh
 # Développement (charge base + override automatiquement)
-docker compose up -d
+# 
+docker compose --env-file .env.dev up -d
 
 # Production (base + prod, ignore override)
 docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d
