@@ -34,8 +34,8 @@ INSERT INTO ressources_status (id, creation_time, label) VALUES
 
 INSERT INTO ressource_types (id, creation_time, label) VALUES
 (gen_random_uuid(), NOW(), 'Article'),
-(gen_random_uuid(), NOW(), 'Défi'),
-(gen_random_uuid(), NOW(), 'Cours PDF'),
+(gen_random_uuid(), NOW(), 'Sondage'),
+(gen_random_uuid(), NOW(), 'Quizz'),
 (gen_random_uuid(), NOW(), 'Événement');
 
 COMMIT;
