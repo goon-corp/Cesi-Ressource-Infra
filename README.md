@@ -118,3 +118,20 @@ jobs:
           secrets: |
             "npm_token=${{ secrets.NPM_TOKEN }}"
 ```
+
+## Seeding de la base de données
+
+### Consignes
+
+Il est important de lancer ```seed.sh``` **UNIQUEMENT** après avoir appliqué les migrations de l'API.
+
+
+### Seed.sh
+Ce script permet d'injecter tous les scripts PGSQL présents dans le dossier ```manual-seeding``` **SAUF** flush.sql.
+
+### Flush.sh
+Ce script permet de clean la db des données qui ont étés ingérées via le script ```seed.sh```.
+
+
+### Hard-flush.sh
+Ce script est l'équivalent d'un ```--force``` sur le flush, il permet de truncate **TOUTES** les tables et de garder uniquement les utilisateurs par défaut.
