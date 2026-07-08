@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ressource-api
+  namespace: ressource
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ressource-api
+  template:
+    metadata:
+      labels:
+        app: ressource-api
+    spec:
+      imagePullSecrets:
+        - name: ghcr-secret
+      containers:
+        - name: ressource-api
+          image: ghcr.io/bloc2-cda/ressource-backend:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: CONNEXION_STRING
+              valueFrom:
+                secretKeyRef:
+                  name: ressource-secrets
+                  key: CONNEXION_STRING
+            - name: MJ_APIKEY_PUBLIC
+              valueFrom:
+                secretKeyRef:
+                  name: ressource-secrets
+                  key: MJ_APIKEY_PUBLIC
+            - name: MJ_APIKEY_PRIVATE
+              valueFrom:
+                secretKeyRef:
+                  name: ressource-secrets
+                  key: MJ_APIKEY_PRIVATE
