@@ -8,8 +8,8 @@ volumes:
       sources:
         - configMap:
             name: postgres-init-core
-        - configMap:
-            name: postgres-init-cities-1
+        # - configMap:
+        #     name: postgres-init-cities-1
         - configMap:
             name: postgres-init-cities-2
         - configMap:
