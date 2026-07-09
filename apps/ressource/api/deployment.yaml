@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ressource-api
+  namespace: ressource
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ressource-api
+  template:
+    metadata:
+      labels:
+        app: ressource-api
+    spec:
+      imagePullSecrets:
+        - name: ghcr-secret
+      containers:
+        - name: ressource-api
+          image: ghcr.io/goon-corp/ressource-backend:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: CONNECTION_STRING
+              valueFrom:
+                secretKeyRef:
+                  name: ressource-secrets
+                  key: CONNECTION_STRING
+            - name: REDIS_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: ressource-secrets
+                  key: REDIS_HOST
+            - name: REDIS_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: ressource-secrets
+                  key: REDIS_PORT
+            - name: REDIS_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: ressource-secrets
+                  key: REDIS_PASSWORD
+            - name: MJ_APIKEY_PUBLIC
+              valueFrom:
+                secretKeyRef:
+                  name: ressource-secrets
+                  key: MJ_APIKEY_PUBLIC
+            - name: MJ_APIKEY_PRIVATE
+              valueFrom:
+                secretKeyRef:
+                  name: ressource-secrets
+                  key: MJ_APIKEY_PRIVATE
+          readinessProbe:
+            tcpSocket:
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 10
+          livenessProbe:
+            tcpSocket:
+              port: 8080
+            initialDelaySeconds: 15
+            periodSeconds: 20

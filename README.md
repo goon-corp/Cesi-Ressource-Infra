@@ -2,7 +2,8 @@
 
 ```zsh
 # Développement (charge base + override automatiquement)
-docker compose up -d
+# 
+docker compose --env-file .env.dev up -d
 
 # Production (base + prod, ignore override)
 docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d
@@ -34,22 +35,23 @@ environment:
 creez en dev un fichier `.env.dev` et `.env.prod` qui contient les variables suivantes:
 
 ```
-DB_HOST
-DB_PORT
-DB_USER
-DB_PASSWORD
-DB_NAME
-POOL_MODE
-MAX_CLIENT_CONN
-DEFAULT_POOL_SIZE
-MIN_POOL_SIZE
-RESERVE_POOL_SIZE
-LISTEN_ADDRESS
-LISTEN_PORT
-AUTH_TYPE
-POSTGRES_USER
-POSTGRES_PASSWORD
-POSTGRES_DB
+DB_HOST=
+DB_PORT=
+DB_USER=
+DB_PASSWORD=
+DB_NAME=
+POOL_MODE=
+MAX_CLIENT_CONN=
+DEFAULT_POOL_SIZE=
+MIN_POOL_SIZE=
+RESERVE_POOL_SIZE=
+LISTEN_ADDRESS=
+LISTEN_PORT=
+AUTH_TYPE=
+POSTGRES_USER=
+POSTGRES_PASSWORD=
+POSTGRES_DB=
+REDIS_PASSWORD=
 ```
 
 ## Gestion des secrets en fonction de l'environnment
@@ -116,3 +118,20 @@ jobs:
           secrets: |
             "npm_token=${{ secrets.NPM_TOKEN }}"
 ```
+
+## Seeding de la base de données
+
+### Consignes
+
+Il est important de lancer ```seed.sh``` **UNIQUEMENT** après avoir appliqué les migrations de l'API.
+
+
+### Seed.sh
+Ce script permet d'injecter tous les scripts PGSQL présents dans le dossier ```manual-seeding``` **SAUF** flush.sql.
+
+### Flush.sh
+Ce script permet de clean la db des données qui ont étés ingérées via le script ```seed.sh```.
+
+
+### Hard-flush.sh
+Ce script est l'équivalent d'un ```--force``` sur le flush, il permet de truncate **TOUTES** les tables et de garder uniquement les utilisateurs par défaut.

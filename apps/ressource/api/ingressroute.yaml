@@ -1,0 +1,16 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: ressource-api
+  namespace: ressource
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`ressource-api.pimer0.cloud`)
+      kind: Rule
+      services:
+        - name: ressource-api
+          port: 8080
+  tls:
+    certResolver: letsencrypt

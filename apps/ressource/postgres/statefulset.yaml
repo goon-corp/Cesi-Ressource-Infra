@@ -1,0 +1,31 @@
+# Remplace dans apps/ressource/postgres/statefulset.yaml
+# le bloc "volumes:" existant (celui qui référence une seule ConfigMap "postgres-init-scripts")
+# par celui-ci, qui fusionne les 6 ConfigMaps via un volume projeté.
+
+      volumes:
+        - name: init-scripts
+          projected:
+            sources:
+              - configMap:
+                  name: postgres-init-core
+              - configMap:
+                  name: postgres-init-cities-1
+              - configMap:
+                  name: postgres-init-cities-2
+              - configMap:
+                  name: postgres-init-cities-3
+              - configMap:
+                  name: postgres-init-cities-4
+              - configMap:
+                  name: postgres-init-cities-5
+
+# Le volumeMounts existant dans le container "postgres" ne change pas :
+#   - name: init-scripts
+#     mountPath: /docker-entrypoint-initdb.d
+#
+# PostgreSQL exécutera les fichiers dans l'ordre alphabétique au premier démarrage :
+#   001-init-schemas.sql
+#   002-seeding-mtda-tables.sql
+#   003-seeding-regions.sql
+#   004-seeding-departments.sql
+#   005-seeding-cities-part1.sql ... part5.sql
