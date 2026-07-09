@@ -17,7 +17,7 @@ spec:
         - name: ghcr-secret
       containers:
         - name: ressource-api
-          image: image: ghcr.io/goon-corp/cesi-ressource-api:latest
+          image: ghcr.io/goon-corp/cesi-ressource-api:latest
           ports:
             - containerPort: 8080
           env:
