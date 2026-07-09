@@ -2,22 +2,22 @@
 # le bloc "volumes:" existant (celui qui référence une seule ConfigMap "postgres-init-scripts")
 # par celui-ci, qui fusionne les 6 ConfigMaps via un volume projeté.
 
-      volumes:
-        - name: init-scripts
-          projected:
-            sources:
-              - configMap:
-                  name: postgres-init-core
-              - configMap:
-                  name: postgres-init-cities-1
-              - configMap:
-                  name: postgres-init-cities-2
-              - configMap:
-                  name: postgres-init-cities-3
-              - configMap:
-                  name: postgres-init-cities-4
-              - configMap:
-                  name: postgres-init-cities-5
+volumes:
+  - name: init-scripts
+    projected:
+      sources:
+        - configMap:
+            name: postgres-init-core
+        - configMap:
+            name: postgres-init-cities-1
+        - configMap:
+            name: postgres-init-cities-2
+        - configMap:
+            name: postgres-init-cities-3
+        #   - configMap:
+        #       name: postgres-init-cities-4
+        - configMap:
+            name: postgres-init-cities-5
 
 # Le volumeMounts existant dans le container "postgres" ne change pas :
 #   - name: init-scripts
