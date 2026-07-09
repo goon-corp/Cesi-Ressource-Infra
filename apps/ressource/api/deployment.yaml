@@ -17,15 +17,30 @@ spec:
         - name: ghcr-secret
       containers:
         - name: ressource-api
-          image: ghcr.io/bloc2-cda/ressource-backend:latest
+          image: ghcr.io/goon-corp/ressource-backend:latest
           ports:
             - containerPort: 8080
           env:
-            - name: CONNEXION_STRING
+            - name: CONNECTION_STRING
               valueFrom:
                 secretKeyRef:
                   name: ressource-secrets
-                  key: CONNEXION_STRING
+                  key: CONNECTION_STRING
+            - name: REDIS_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: ressource-secrets
+                  key: REDIS_HOST
+            - name: REDIS_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: ressource-secrets
+                  key: REDIS_PORT
+            - name: REDIS_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: ressource-secrets
+                  key: REDIS_PASSWORD
             - name: MJ_APIKEY_PUBLIC
               valueFrom:
                 secretKeyRef:
@@ -36,3 +51,13 @@ spec:
                 secretKeyRef:
                   name: ressource-secrets
                   key: MJ_APIKEY_PRIVATE
+          readinessProbe:
+            tcpSocket:
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 10
+          livenessProbe:
+            tcpSocket:
+              port: 8080
+            initialDelaySeconds: 15
+            periodSeconds: 20

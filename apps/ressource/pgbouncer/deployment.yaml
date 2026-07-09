@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: pgbouncer
-  namespace: cesizen
+  namespace: ressource
 spec:
   replicas: 1
   selector:
@@ -20,9 +20,14 @@ spec:
             - containerPort: 6432
           envFrom:
             - secretRef:
-                name: cesizen-secrets
+                name: ressource-secrets
           readinessProbe:
             tcpSocket:
               port: 6432
             initialDelaySeconds: 5
             periodSeconds: 10
+          livenessProbe:
+            tcpSocket:
+              port: 6432
+            initialDelaySeconds: 10
+            periodSeconds: 20
