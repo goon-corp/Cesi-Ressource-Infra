@@ -26,6 +26,11 @@ spec:
                 secretKeyRef:
                   name: ressource-secrets
                   key: CONNECTION_STRING
+            - name: DATABASE_CONNECTION_STRING
+              valueFrom:
+                secretKeyRef:
+                  name: ressource-secrets
+                  key: DATABASE_CONNECTION_STRING
             - name: REDIS_HOST
               valueFrom:
                 secretKeyRef:
