@@ -56,6 +56,107 @@ spec:
                 secretKeyRef:
                   name: ressource-secrets
                   key: JWT_SECRET
+
+            - name: DBCONTEXT_POOL_SIZE
+              valueFrom:
+                secretKeyRef:
+                  name: ressource-secrets
+                  key: DBCONTEXT_POOL_SIZE
+            - name: API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: ressource-secrets
+                  key: API_KEY
+            - name: SMTP_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: ressource-secrets
+                  key: SMTP_HOST
+            - name: SMTP_EMAIL_SENDER
+              valueFrom:
+                secretKeyRef:
+                  name: ressource-secrets
+                  key: SMTP_EMAIL_SENDER
+            - name: SMTP_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: ressource-secrets
+                  key: SMTP_PASSWORD
+            - name: URL_FRONT
+              valueFrom:
+                secretKeyRef:
+                  name: ressource-secrets
+                  key: URL_FRONT
+            - name: URL_CLIENT
+              valueFrom:
+                secretKeyRef:
+                  name: ressource-secrets
+                  key: URL_CLIENT
+            - name: URL_BACKOFFICE
+              valueFrom:
+                secretKeyRef:
+                  name: ressource-secrets
+                  key: URL_BACKOFFICE
+            - name: CLOUDFLARE_ACCOUNT_ID
+              valueFrom:
+                secretKeyRef:
+                  name: ressource-secrets
+                  key: CLOUDFLARE_ACCOUNT_ID
+            - name: CLOUDFLARE_BUCKET_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: ressource-secrets
+                  key: CLOUDFLARE_BUCKET_NAME
+            - name: CLOUDFLARE_BUCKET_URL
+              valueFrom:
+                secretKeyRef:
+                  name: ressource-secrets
+                  key: CLOUDFLARE_BUCKET_URL
+            - name: S3_ACCESS_KEY_ID
+              valueFrom:
+                secretKeyRef:
+                  name: ressource-secrets
+                  key: S3_ACCESS_KEY_ID
+            - name: S3_SECRET_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: ressource-secrets
+                  key: S3_SECRET_ACCESS_KEY
+            - name: CLOUDFLARE_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: ressource-secrets
+                  key: CLOUDFLARE_TOKEN
+            - name: CFAT_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: ressource-secrets
+                  key: CFAT_TOKEN
+            - name: DEPLOYMENT_ENVIRONMENT
+              valueFrom:
+                secretKeyRef:
+                  name: ressource-secrets
+                  key: DEPLOYMENT_ENVIRONMENT
+            - name: DEFAULT_USER_ACCOUNT_EMAIL
+              valueFrom:
+                secretKeyRef:
+                  name: ressource-secrets
+                  key: DEFAULT_USER_ACCOUNT_EMAIL
+            - name: DEFAULT_USER_ACCOUNT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: ressource-secrets
+                  key: DEFAULT_USER_ACCOUNT_PASSWORD
+            - name: DEFAULT_ADMIN_ACCOUNT_EMAIL
+              valueFrom:
+                secretKeyRef:
+                  name: ressource-secrets
+                  key: DEFAULT_ADMIN_ACCOUNT_EMAIL
+            - name: DEFAULT_ADMIN_ACCOUNT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: ressource-secrets
+                  key: DEFAULT_ADMIN_ACCOUNT_PASSWORD
           readinessProbe:
             tcpSocket:
               port: 8080
